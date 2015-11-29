@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -57,16 +57,16 @@
 
 
 
-<meta name="description" content="layout: posttitle: “Java NIO文件操作”description: “Java NIO(New I/O)，可以理解为I/O的一个新版本，Java NIO在性能上比I/O提高了很多，I/O的操作是面向流的，这就意味着每次只能从流中读取一个或多个&amp;gt;    字节，直到所有字节读取完毕，这些读到字节没有被缓冲到任何地方，而且不能移动流中的数据，Java NIO面向缓冲，对数据">
+<meta name="description" content="Java NIO(New I/O)，可以理解为I/O的一个新版本，Java NIO在性能上比I/O提高了很多，I/O的操作是面向流的，这就意味着每次只能从流中读取一个或多个&amp;gt;    字节，直到所有字节读取完毕，这些读到字节没有被缓冲到任何地方，而且不能移动流中的数据，Java NIO面向缓冲，对数据的操作按块进行，按块处理要按&amp;gt;    字节处理快很多，同时还可以对读入缓冲中的数据进行移动，增加了处">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NextMark">
+<meta property="og:title" content="Java NIO文件操作">
 <meta property="og:url" content="http://yoursite.com/2014/10/01/2014-10-01-java-nio/index.html">
 <meta property="og:site_name" content="NextMark">
-<meta property="og:description" content="layout: posttitle: “Java NIO文件操作”description: “Java NIO(New I/O)，可以理解为I/O的一个新版本，Java NIO在性能上比I/O提高了很多，I/O的操作是面向流的，这就意味着每次只能从流中读取一个或多个&amp;gt;    字节，直到所有字节读取完毕，这些读到字节没有被缓冲到任何地方，而且不能移动流中的数据，Java NIO面向缓冲，对数据">
-<meta property="og:updated_time" content="2015-11-29T07:20:28.198Z">
+<meta property="og:description" content="Java NIO(New I/O)，可以理解为I/O的一个新版本，Java NIO在性能上比I/O提高了很多，I/O的操作是面向流的，这就意味着每次只能从流中读取一个或多个&amp;gt;    字节，直到所有字节读取完毕，这些读到字节没有被缓冲到任何地方，而且不能移动流中的数据，Java NIO面向缓冲，对数据的操作按块进行，按块处理要按&amp;gt;    字节处理快很多，同时还可以对读入缓冲中的数据进行移动，增加了处">
+<meta property="og:updated_time" content="2015-11-29T07:22:53.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NextMark">
-<meta name="twitter:description" content="layout: posttitle: “Java NIO文件操作”description: “Java NIO(New I/O)，可以理解为I/O的一个新版本，Java NIO在性能上比I/O提高了很多，I/O的操作是面向流的，这就意味着每次只能从流中读取一个或多个&amp;gt;    字节，直到所有字节读取完毕，这些读到字节没有被缓冲到任何地方，而且不能移动流中的数据，Java NIO面向缓冲，对数据">
+<meta name="twitter:title" content="Java NIO文件操作">
+<meta name="twitter:description" content="Java NIO(New I/O)，可以理解为I/O的一个新版本，Java NIO在性能上比I/O提高了很多，I/O的操作是面向流的，这就意味着每次只能从流中读取一个或多个&amp;gt;    字节，直到所有字节读取完毕，这些读到字节没有被缓冲到任何地方，而且不能移动流中的数据，Java NIO面向缓冲，对数据的操作按块进行，按块处理要按&amp;gt;    字节处理快很多，同时还可以对读入缓冲中的数据进行移动，增加了处">
 
 
 
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title>  | NextMark </title>
+  <title> Java NIO文件操作 | NextMark </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -222,7 +222,7 @@
             
             
               
-                
+                Java NIO文件操作
               
             
           </h1>
@@ -239,6 +239,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -267,8 +286,7 @@
       
 
       
-        <p>layout: post<br>title: “Java NIO文件操作”<br>description: “Java NIO(New I/O)，可以理解为I/O的一个新版本，Java NIO在性能上比I/O提高了很多，I/O的操作是面向流的，这就意味着每次只能从流中读取一个或多个&gt;    字节，直到所有字节读取完毕，这些读到字节没有被缓冲到任何地方，而且不能移动流中的数据，Java NIO面向缓冲，对数据的操作按块进行，按块处理要按&gt;    字节处理快很多，同时还可以对读入缓冲中的数据进行移动，增加了处理的灵活性”<br>keywords: “”<br>category: “Java”</p>
-<h2 id="tags:_[Java]">tags: [Java]</h2><p>Java NIO(New I/O)，可以理解为I/O的一个新版本，Java NIO在性能上比I/O提高了很多，I/O的操作是面向流的，这就意味着每次只能从流中读取一个或多个字节，直到所有字节读取完毕，这些读到字节没有被缓冲到任何地方，而且不能移动流中的数据，Java NIO面向缓冲，对数据的操作按块进行，按块处理要按字节处理快很多，同时还可以对读入缓冲中的数据进行移动，增加了处理的灵活性。</p>
+        <p>Java NIO(New I/O)，可以理解为I/O的一个新版本，Java NIO在性能上比I/O提高了很多，I/O的操作是面向流的，这就意味着每次只能从流中读取一个或多个字节，直到所有字节读取完毕，这些读到字节没有被缓冲到任何地方，而且不能移动流中的数据，Java NIO面向缓冲，对数据的操作按块进行，按块处理要按字节处理快很多，同时还可以对读入缓冲中的数据进行移动，增加了处理的灵活性。</p>
 <p>接下来主要介绍其中的ByteBuffer、FileChannel及其使用</p>
 <p>###ByteBuffer<br>Buffer是保存了原始数据的数组，也成为缓冲区，Buffer有很多自己的属性，如下</p>
 <ul>
@@ -291,22 +309,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/09/22/2014-09-22-play-module-multidb/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2014/09/22/2014-09-22-play-module-multidb/" rel="next" title="Play multidb 模块">
+                <i class="fa fa-chevron-left"></i> Play multidb 模块
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/27/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -322,7 +342,7 @@
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2014/10/01/2014-10-01-java-nio/"
-     data-title=""
+     data-title="Java NIO文件操作"
      data-content=""
      data-url="http://yoursite.com/2014/10/01/2014-10-01-java-nio/">
   <div class="ds-share-inline">
@@ -352,7 +372,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2014/10/01/2014-10-01-java-nio/"
-           data-title="" data-url="http://yoursite.com/2014/10/01/2014-10-01-java-nio/">
+           data-title="Java NIO文件操作" data-url="http://yoursite.com/2014/10/01/2014-10-01-java-nio/">
       </div>
     
   </div>
@@ -397,7 +417,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -453,7 +473,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags:_[Java]"><span class="nav-number">1.</span> <span class="nav-text">tags: [Java]</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
