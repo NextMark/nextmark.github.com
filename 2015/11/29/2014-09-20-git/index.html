@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git 回退 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="对于初学者，使用git避免不了的是出各种的错，比如错误的提交了一个本不想提交的修改，下面就来介绍一下如何处理这样的情况。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 回退">
+<meta property="og:url" content="http://yoursite.com/2015/11/29/2014-09-20-git/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="对于初学者，使用git避免不了的是出各种的错，比如错误的提交了一个本不想提交的修改，下面就来介绍一下如何处理这样的情况。">
+<meta property="og:updated_time" content="2015-11-29T05:56:24.729Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git 回退">
+<meta name="twitter:description" content="对于初学者，使用git避免不了的是出各种的错，比如错误的提交了一个本不想提交的修改，下面就来介绍一下如何处理这样的情况。">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2014-09-20-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/29/2014-09-20-git/" class="article-date">
+  <time datetime="2015-11-29T05:57:00.433Z" itemprop="datePublished">2015-11-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git 回退
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对于git的认识从刚入职开始，简单了解后知道主要功能，代码托管，OK！</p>
+<p>因为只是个简单的代码托管工具，所以对它的了解只是会简单使用即可，然而……问题出现了。</p>
+<p>在一次对工程进行修改后（花费了我近一周的时间写的代码），开始使用git提交，我的步骤是：</p>
+<blockquote>
+<ul>
+<li><p>git diff // 终端查看有哪些修改，gitk工具当然可以，但看不到缩进的问题</p>
+</li>
+<li><p>git status // 查看有哪些文件修改</p>
+</li>
+<li><p>git stash  // 隐藏本地修改，防止与第四步冲突</p>
+</li>
+<li><p>git pull  // 从服务器拉最新代码</p>
+</li>
+<li><p>git stash pop  // 释放自己修改的代码到本地</p>
+</li>
+<li><p>git add . // 缓存修改的文件</p>
+</li>
+<li><p>git commit // 提交</p>
+</li>
+</ul>
+</blockquote>
+<p>此时进入vi，就是在这时发现修改的代码中配置文件有个地方还没有修改过来，于是什么也没有写就退出vi，想要能回到git add .之前的状态，于是上网查解决办法，半个小时后看到一个命令git reset –hard HEAD，果断使用了，结果就是……本次修改全部不见了，回退到了上一次修改的状态，后悔死了，几天写的代码没了，全没了，待到第二天问了同事，告诉我：没救，重写吧！还好有那么些记忆，周六用半天全部重新写了一遍，因为之前用了git diff命令，所以还好有部分代码是可以看到的，但终端设置的滚动只有512行，所以只剩一部分代码（马上设置了终端，无限滚动）。</p>
+<p>有了这次教训想必是要有所收获的，git回退。</p>
+<p>撤销对文件的修改，还没有缓存的文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout $filename</span><br></pre></td></tr></table></figure>
+<p>执行git add之后想回退(撤销暂存的文件)？</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD <span class="variable">$filename</span></span><br></pre></td></tr></table></figure>
+<p>回退到某个版本</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard <span class="variable">$commitHash</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/29/2014-09-20-git/" data-id="cihk62rz40000wcp88axxx97l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/29/2014-09-22-play-module-multidb/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Play multidb 模块
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Play/">Play</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Play/" style="font-size: 10px;">Play</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/11/29/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/29/2014-10-01-java-nio/">Java NIO文件操作</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/29/2014-09-22-play-module-multidb/">Play multidb 模块</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/29/2014-09-20-git/">Git 回退</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
